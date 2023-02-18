@@ -10,6 +10,7 @@
 #include <Ethernet.h>
 
 #define DEBUG 1
+#define COMMAND_ARRAY_SIZE 14
 
 byte mac[] = { 0x01, 0xAD, 0xBE, 0xEF, 0xFE, 0xEE }; //physical mac address
 byte ip[] = { 192, 168, 3, 237 }; // IP address in LAN – need to change according to your Network address
@@ -35,7 +36,22 @@ void setup(){
 }
 
 uint8_t sCommand = 0x47;
-//uint8_t sCommands[] = {};
+const uint8_t sCommands[COMMAND_ARRAY_SIZE] = 
+                      { 0x45,   //Power
+                        0x47,   //ScreenShow
+                        0x44,   //In 1
+                        0x40,   //In 2
+                        0x07,   //In 3
+                        0x15,   //In 4
+                        0x43,   //Channel -
+                        0x09,   //Channel +
+                        0xC,    //2 sources in 1 view
+                        0x18,   //4 sources in 1 view
+                        0x08,   //1 big + 3 small sources in 1 view
+                        0x1c,   //Fullscreen
+                        0x5e,   //Audio
+                        0x5a   //720or1080p resolution change
+                        };
 uint8_t sRepeats = 0;
 
 void loop(){
@@ -96,7 +112,7 @@ void loop(){
                         }
 
                         //run irSend
-                        mySendIR(sCommand);
+                        if(runIDint< COMMAND_ARRAY_SIZE) mySendIR(sCommands[runIDint]);
 
                         client.println("HTTP/1.1 200 OK"); //send 200 back
                         client.println("Content-Type: text/html");
@@ -128,7 +144,7 @@ void mySendIR(uint8_t _cmd){
      */
     Serial.println();
     Serial.print(F("Send now: address=0x00, command=0x"));
-    Serial.print(sCommand, HEX);
+    Serial.print(_cmd, HEX);
     Serial.print(F(", repeats="));
     Serial.print(sRepeats);
     Serial.println();
@@ -137,7 +153,7 @@ void mySendIR(uint8_t _cmd){
     Serial.flush();
 
     // Receiver output for the first loop must be: Protocol=NEC Address=0x102 Command=0x34 Raw-Data=0xCB340102 (32 bits)
-    IrSender.sendNEC(0x00, sCommand, sRepeats);
+    IrSender.sendNEC(0x00, _cmd, sRepeats);
 
     sRepeats++;
     
