@@ -112,18 +112,29 @@ void loop(){
                         }
 
                         //run irSend
-                        if(runIDint< COMMAND_ARRAY_SIZE) mySendIR(sCommands[runIDint]);
-
-                        client.println("HTTP/1.1 200 OK"); //send 200 back
-                        client.println("Content-Type: text/html");
-                        client.println();
-    
-                        client.stop();
+                        if(runIDint< COMMAND_ARRAY_SIZE) 
+                        {
+                          mySendIR(sCommands[runIDint]);
+  
+                          client.println("HTTP/1.1 200 OK"); //send 200 back
+                          //client.println("Content-Type: text/html");
+                          client.println();
+      
+                          client.stop();
+                        }
+                        else
+                        {
+                          client.println("HTTP/1.1 406 Not Acceptable"); //send 406 back
+                          //client.println("Content-Type: text/html");
+                          client.println();
+      
+                          client.stop();
+                        }
                     }
                     else
                     {
-                        client.println("HTTP/1.1 403 Forbidden"); //send erreur request
-                        client.println("Content-Type: text/html");
+                        client.println("HTTP/1.1 400 Bad Request"); //send erreur request
+                        //client.println("Content-Type: text/html");
                         client.println();
     
                         client.stop();
