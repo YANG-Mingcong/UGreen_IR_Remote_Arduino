@@ -8,7 +8,7 @@
 #include <SPI.h>
 #include <Ethernet.h>
 
-#define DEBUG 1
+#define DEBUG 0 //1 for print debug information in Serial monitor. 0 for hide all.
 #define COMMAND_ARRAY_SIZE 14
 
 byte mac[] = { 0x01, 0xAD, 0xBE, 0xEF, 0xFE, 0xEE }; //physical mac address
