@@ -13,8 +13,8 @@ The Remoter commands as list below
 Buttons: 
 |Button|Protocol|Address|Command|Raw-Data|remark|Control URL|
 |--|--|--|--|--|--|--|
-|Power|NEC|0x0|0x45|0xBA45FF00|32 bits LSB first|http://IPaddress/run/0/|
-|ScreenShow|NEC|0x0|0x47|0xB847FF00|32 bits LSB first|http://IPaddress/run/1/|
+|Power|NEC|0x0|0x45|0xBA45FF00|32 bits LSB first|http://IPaddress/run/13/|
+|ScreenShow|NEC|0x0|0x47|0xB847FF00|32 bits LSB first|http://IPaddress/run/0/|
 |IN 1|NEC|0x0|0x44|0xBB44FF00|32 bits LSB first|http://IPaddress/run/2/|
 |IN 2|NEC|0x0|0x40|0xBB40FF00|32 bits LSB first|http://IPaddress/run/3/|
 |IN 3|NEC|0x0|0x07|0xF807FF00|32 bits LSB first|http://IPaddress/run/4/|
@@ -26,4 +26,4 @@ Buttons:
 |1+3|NEC|0x0|0x08|0xF708FF00|32 bits LSB first|http://IPaddress/run/10/|
 |Fullscreen|NEC|0x0|0x1C|0xE31CFF00|32 bits LSB first|http://IPaddress/run/11/|
 |Audio|NEC|0x0|0x5E|0xA15EFF00|32 bits LSB first|http://IPaddress/run/12/|
-|720/1080|NEC|0x0|0x5A|0xA55AFF00|32 bits LSB first|http://IPaddress/run/13/|
+|720/1080|NEC|0x0|0x5A|0xA55AFF00|32 bits LSB first|http://IPaddress/run/1/|
